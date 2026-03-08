@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.28)
 project(RaceTimer)
 
 add_executable(race_timer_server
+    src/server/racetimer.cpp
     src/server/main.cpp
 )
 
