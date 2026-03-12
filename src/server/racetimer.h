@@ -1,6 +1,7 @@
 #include <chrono>
 #include <iostream>
 #include <memory>
+#include <string>
 #include <thread>
 
 using Clock = std::chrono::steady_clock;
@@ -27,6 +28,14 @@ class RaceTimer {
         std::cout << "Command is: " << cmd << std::endl;
         if (cmd == "p") {
             std::cout << "--> " << std::endl;
+        } else if (cmd == "start") {
+            std::cout << "Starting!" << std::endl;
+            start_time_ =  std::chrono::steady_clock::now();
+        } else if (cmd == "stop") {
+            std::chrono::duration<double> difftime =  std::chrono::steady_clock::now() - start_time_;
+            std::cout << "Stopping! " << difftime << std::endl;
+        } else {
+            std::cout << "Unknown command: " + cmd << std::endl;
         }
     }
 
@@ -35,5 +44,5 @@ class RaceTimer {
 
     std::unique_ptr<std::thread> timer_thread;
     TimerConfig config_;
-    const TimePoint start_time_;
+    TimePoint start_time_;
 };
