@@ -9,6 +9,9 @@ build: configure
 server: build
 	./$(BUILD_DIR)/race_timer_server
 
+client: build
+	./$(BUILD_DIR)/race_timer_client
+
 clean:
 	rm -rf $(BUILD_DIR)
 
